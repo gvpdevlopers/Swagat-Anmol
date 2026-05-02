@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+/* Custom global styles */
+html, body {
+  font-family: 'Inter', sans-serif;
+  background: #0a0a0a;
+  color: #fff;
+}
+
+
+/* TEXT SELECTION (GLOBAL) */
+ ::selection {
+  background: #c89b7b;   
+  color: #0a0a0a;       
+} 
+/* ::selection {
+  background: rgba(200, 155, 123, 0.35);
+  color: #0a0a0a;
+} */
+
+::-moz-selection {
+  background: #c89b7b;
+  color: #0a0a0a;
+}
