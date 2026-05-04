@@ -15,7 +15,7 @@ import CTA from "../sections/CTA";
 export default function Home() {
   return (
     <>
-       <Hero />
+      <Hero />
       <About />
       <Highlights />
       <Statement />

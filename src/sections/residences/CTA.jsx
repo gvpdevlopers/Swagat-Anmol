@@ -1,95 +1,125 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-export default function FinalCTA() {
-  const sectionRef = useRef(null);
+gsap.registerPlugin(ScrollTrigger);
+
+export default function CTA() {
+  const sectionRef = useRef();
+  const contentRef = useRef();
+  const glowRef = useRef();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".cta-content", {
-        opacity: 0,
-        y: 60,
-        duration: 1.2,
-        ease: "power3.out",
-      });
+      // CONTENT REVEAL
+      gsap.fromTo(
+        contentRef.current.children,
+        { y: 80, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          stagger: 0.15,
+          duration: 1.2,
+          ease: "expo.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+          },
+        }
+      );
 
-      gsap.from(".cta-buttons button", {
-        opacity: 0,
-        y: 30,
-        stagger: 0.15,
-        delay: 0.3,
-        duration: 0.8,
-        ease: "power3.out",
+      // BACKGROUND GLOW FLOAT
+      gsap.to(glowRef.current, {
+        x: 40,
+        y: -30,
+        duration: 8,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
       });
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
+  // MAGNETIC BUTTON EFFECT
+  const handleMove = (e, el) => {
+    const rect = el.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+
+    gsap.to(el, {
+      x: x * 0.2,
+      y: y * 0.2,
+      duration: 0.4,
+      ease: "power2.out",
+    });
+  };
+
+  const handleLeave = (el) => {
+    gsap.to(el, {
+      x: 0,
+      y: 0,
+      duration: 0.5,
+      ease: "elastic.out(1, 0.4)",
+    });
+  };
+
   return (
     <section
       ref={sectionRef}
-      className="relative py-24 md:py-32 bg-[#020617] text-white overflow-hidden"
+      className="relative py-28  bg-black md:py-36 text-white overflow-hidden"
     >
-      {/* BACKGROUND GLOW */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-[#c89b7b]/20 blur-[120px]" />
-      </div>
+      {/* AMBIENT GLOW */}
+      <div
+        ref={glowRef}
+        className="absolute w-[500px] h-[500px] bg-[#c89b7b]/20 blur-[120px] rounded-full top-[-100px] left-[-100px]"
+      />
 
-      <div className="max-w-5xl mx-auto px-6 text-center">
+      {/* SUBTLE GRID (luxury detail) */}
+      <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(circle_at_center,white_1px,transparent_1px)] bg-[length:30px_30px]" />
 
-        {/* CONTENT */}
-        <div className="cta-content">
-
-          <h2 className="text-[34px] md:text-[60px] font-[Space_Grotesk] leading-tight">
-            Experience the <span className="text-[#c89b7b]">next level</span> of living
+      <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
+        <div ref={contentRef}>
+          {/* HEADLINE */}
+          <h2 className="font-[Space_Grotesk] text-4xl sm:text-5xl md:text-6xl font-semibold leading-[1.1] tracking-tight">
+        Experience the next level of living
           </h2>
 
-          <p className="mt-6 text-white/70 max-w-2xl mx-auto text-base md:text-lg">
-            Discover thoughtfully designed residences crafted for comfort,
-            elegance, and long-term value in a prime location.
+          {/* SUBTEXT */}
+          <p className="mt-6 text-gray-300 max-w-xl mx-auto font-[Inter] text-sm sm:text-base leading-relaxed">
+            Discover thoughtfully designed residences crafted for comfort, elegance, and long-term value in a prime location.
           </p>
 
-          {/* BUTTONS */}
-          <div className="cta-buttons mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          {/* DIVIDER */}
+          <div className="mt-8 w-16 h-[2px] mx-auto bg-gradient-to-r from-[#c89b7b] to-[#d4a98c]" />
 
-            {/* PRIMARY CTA */}
+          {/* BUTTONS */}
+          <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+            
+            {/* PRIMARY */}
             <button
-              className="
-                px-8 py-4 rounded-full
-                bg-[#c89b7b]
-                text-black font-medium
-                hover:scale-[1.05]
-                transition duration-300
-                shadow-lg shadow-[#c89b7b]/20
-              "
+              onMouseMove={(e) => handleMove(e, e.currentTarget)}
+              onMouseLeave={(e) => handleLeave(e.currentTarget)}
+              className="relative px-8 py-4 rounded-full font-[Space_Grotesk] text-sm backdrop-blur-xl bg-white/10 border border-white/20 shadow-[0_10px_40px_rgba(0,0,0,0.4)] overflow-hidden group hover:cursor-pointer"
             >
-              Book Site Visit
+              <span className="absolute inset-0 bg-gradient-to-r from-[#c89b7b]/20 to-[#d4a98c]/20 opacity-0 group-hover:opacity-100 transition duration-500" />
+              <span className="relative z-10 group-hover:text-[#c89b7b] transition">
+                Schedule Site Visit
+              </span>
             </button>
 
-            {/* SECONDARY CTA */}
+            {/* SECONDARY */}
             <button
-              className="
-                px-8 py-4 rounded-full
-                border border-white/20
-                text-white
-                hover:border-[#c89b7b]
-                hover:text-[#c89b7b]
-                transition duration-300
-              "
+              onMouseMove={(e) => handleMove(e, e.currentTarget)}
+              onMouseLeave={(e) => handleLeave(e.currentTarget)}
+              className="px-8 py-4 rounded-full font-[Space_Grotesk] text-sm border border-white/20 hover:border-[#c89b7b]/60 hover:text-[#c89b7b] transition backdrop-blur-xl bg-white/5 hover:cursor-pointer"
             >
-              Download Brochure
+              Download Brochure →
             </button>
 
           </div>
-
         </div>
-
-        {/* TRUST LINE */}
-        <p className="mt-10 text-xs text-white/40 tracking-wide">
-          Limited units available • Enquire today
-        </p>
-
       </div>
     </section>
   );

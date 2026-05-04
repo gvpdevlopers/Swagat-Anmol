@@ -5,6 +5,7 @@ import Loader from "./components/Loader";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
+import PageTransition from "./components/PageTransition";
 
 import Home from "./pages/Home";
 import Residences from "./pages/Residences";
@@ -42,11 +43,11 @@ export default function App() {
       {!loading && (
         <>
           <Navbar />
-
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/residences" element={<Residences />} />
-            {/* 
+          <PageTransition>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/residences" element={<Residences />} />
+              {/* 
             <Route path="/amenities" element={<Amenities />} />
             <Route path="/floorplans" element={<FloorPlans />} />
             <Route path="/about" element={<AboutUs />} />
@@ -56,8 +57,8 @@ export default function App() {
             <Route path="/faqs" element={<FAQ />} />
             <Route path="*" element={<NotFound />} /> 
             */}
-          </Routes>
-
+            </Routes>
+          </PageTransition>
           <Footer />
           <BackToTop />
         </>

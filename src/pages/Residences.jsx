@@ -5,6 +5,7 @@ import LocationAdvantage from "../sections/residences/LocationAdvantage";
 import ResidencesHero from "../sections/residences/ResidencesHero";
 import ResidencesOverview from "../sections/residences/ResidencesOverview";
 import Specifications from "../sections/residences/Specifications";
+import UnitFloorPlans from "../sections/residences/UnitFloorPlans";
 import UnitTypes from "./UnitTypes";
 
 export default function Residences() {
@@ -12,8 +13,7 @@ export default function Residences() {
     <>
        <ResidencesHero />
        <ResidencesOverview />
-       <UnitTypes />
-       <FloorPlans/>
+       <UnitFloorPlans />
        <Specifications />
        <Amenities />
        <LocationAdvantage />

@@ -1,5 +1,8 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function ResidencesOverview() {
   const sectionRef = useRef(null);
@@ -9,7 +12,7 @@ export default function ResidencesOverview() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // HEADING REVEAL
+      // HEADING
       gsap.fromTo(
         headingRef.current,
         { y: 60, opacity: 0, filter: "blur(10px)" },
@@ -17,12 +20,16 @@ export default function ResidencesOverview() {
           y: 0,
           opacity: 1,
           filter: "blur(0px)",
-          duration: 1.2,
+          duration: 1.1,
           ease: "power3.out",
+          scrollTrigger: {
+            trigger: headingRef.current,
+            start: "top 85%",
+          },
         }
       );
 
-      // PARAGRAPH
+      // TEXT
       gsap.fromTo(
         textRef.current,
         { y: 40, opacity: 0 },
@@ -30,35 +37,32 @@ export default function ResidencesOverview() {
           y: 0,
           opacity: 1,
           duration: 1,
-          delay: 0.2,
+          delay: 0.1,
           ease: "power2.out",
+          scrollTrigger: {
+            trigger: textRef.current,
+            start: "top 90%",
+          },
         }
       );
 
-      // CARDS STAGGER
+      // CARDS
       gsap.fromTo(
         cardsRef.current,
-        { y: 50, opacity: 0, scale: 0.95 },
+        { y: 60, opacity: 0, scale: 0.96 },
         {
           y: 0,
           opacity: 1,
           scale: 1,
-          stagger: 0.15,
+          stagger: 0.12,
           duration: 1,
-          delay: 0.3,
           ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 80%",
+          },
         }
       );
-
-      // SUBTLE FLOAT (premium feel)
-      gsap.to(cardsRef.current, {
-        y: -8,
-        duration: 3,
-        ease: "sine.inOut",
-        repeat: -1,
-        yoyo: true,
-        stagger: 0.2,
-      });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -67,23 +71,25 @@ export default function ResidencesOverview() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-20 md:py-32 bg-gradient-to-b from-[#071a33] to-black text-white overflow-hidden"
+      className="relative py-24 md:py-32 overflow-hidden text-white"
+      style={{
+        background: "linear-gradient(135deg, #071a33, #0a2342)",
+      }}
     >
-      {/* SOFT GLOW */}
+      {/* SOFT GLOW LAYERS */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-[-20%] left-[-10%] w-[400px] h-[400px] bg-[#c89b7b]/10 blur-[120px]" />
-        <div className="absolute bottom-[-20%] right-[-10%] w-[400px] h-[400px] bg-[#c89b7b]/10 blur-[120px]" />
+        <div className="absolute top-[-20%] left-[-10%] w-[420px] h-[420px] bg-[#c89b7b]/10 blur-[140px]" />
+        <div className="absolute bottom-[-20%] right-[-10%] w-[420px] h-[420px] bg-[#c89b7b]/10 blur-[140px]" />
       </div>
 
       <div className="relative max-w-6xl mx-auto px-6 text-center">
-
         {/* HEADING */}
         <h2
           ref={headingRef}
-          className="font-[Space_Grotesk] text-[34px] sm:text-[44px] md:text-[60px] lg:text-[72px] leading-[1.05] tracking-tight"
+          className="font-[Space_Grotesk] text-[34px] sm:text-[44px] md:text-[58px] lg:text-[68px] leading-[1.05] tracking-tight"
         >
           Crafted for{" "}
-          <span className="bg-gradient-to-r from-[#c89b7b] to-[#d4a98c] bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-[#c89b7b] to-[#e0bfa3] bg-clip-text text-transparent">
             modern living
           </span>
         </h2>
@@ -98,48 +104,43 @@ export default function ResidencesOverview() {
           elevate everyday living.
         </p>
 
-        {/* HIGHLIGHTS */}
-        <div className="mt-12 md:mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8">
+        {/* CARDS */}
+        <div className="mt-14 md:mt-20 grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8">
+          {[
+            {
+              title: "2 & 3 BHK",
+              desc: "Spacious layouts designed for modern families",
+            },
+            {
+              title: "Premium Design",
+              desc: "Elegant architecture with refined detailing",
+            },
+            {
+              title: "Prime Location",
+              desc: "Seamless connectivity in a peaceful environment",
+            },
+          ].map((item, i) => (
+            <div
+              key={i}
+              ref={(el) => (cardsRef.current[i] = el)}
+              className="group relative p-6 md:p-8 rounded-2xl 
+              backdrop-blur-xl bg-white/5 border border-white/10 
+              transition-all duration-500 
+              hover:-translate-y-2 hover:border-[#c89b7b]/40 cursor-pointer
+              hover:shadow-[0_20px_60px_rgba(200,155,123,0.15)]"
+            >
+              {/* HOVER GLOW */}
+              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br from-[#c89b7b]/10 to-transparent" />
 
-          {/* CARD 1 */}
-          <div
-            ref={(el) => (cardsRef.current[0] = el)}
-            className="p-6 md:p-8 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10"
-          >
-            <h3 className="text-xl md:text-2xl font-[Space_Grotesk] font-semibold">
-              2 & 3 BHK
-            </h3>
-            <p className="mt-2 text-white/60 text-sm">
-              Spacious layouts designed for modern families
-            </p>
-          </div>
+              <h3 className="relative text-xl md:text-2xl font-[Space_Grotesk] font-semibold">
+                {item.title}
+              </h3>
 
-          {/* CARD 2 */}
-          <div
-            ref={(el) => (cardsRef.current[1] = el)}
-            className="p-6 md:p-8 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10"
-          >
-            <h3 className="text-xl md:text-2xl font-[Space_Grotesk] font-semibold">
-              Premium Design
-            </h3>
-            <p className="mt-2 text-white/60 text-sm">
-              Elegant architecture with refined detailing
-            </p>
-          </div>
-
-          {/* CARD 3 */}
-          <div
-            ref={(el) => (cardsRef.current[2] = el)}
-            className="p-6 md:p-8 rounded-2xl backdrop-blur-xl bg-white/5 border border-white/10"
-          >
-            <h3 className="text-xl md:text-2xl font-[Space_Grotesk] font-semibold">
-              Prime Location
-            </h3>
-            <p className="mt-2 text-white/60 text-sm">
-              Seamless connectivity in a peaceful environment
-            </p>
-          </div>
-
+              <p className="relative mt-2 text-white/60 text-sm">
+                {item.desc}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
