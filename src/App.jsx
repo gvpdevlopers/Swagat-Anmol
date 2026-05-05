@@ -9,14 +9,11 @@ import PageTransition from "./components/PageTransition";
 
 import Home from "./pages/Home";
 import Residences from "./pages/Residences";
-// import Amenities from "./pages/Amenities";
-// import FloorPlans from "./pages/FloorPlans";
-// import AboutUs from "./pages/AboutUs";
+import NotFound from "./pages/NotFound";
+import FAQ from "./pages/FAQ";
+import AboutUs from "./pages/AboutUs";
 // import Gallery from "./pages/Gallery";
 // import Contact from "./pages/Contact";
-// import Blog from "./pages/Blog";
-// import FAQ from "./pages/FAQ";
-// import NotFound from "./pages/NotFound";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -47,15 +44,13 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/residences" element={<Residences />} />
-              {/* 
-            <Route path="/amenities" element={<Amenities />} />
-            <Route path="/floorplans" element={<FloorPlans />} />
+              <Route path="/faq" element={<FAQ />} />
+              <Route path="*" element={<NotFound />} />
             <Route path="/about" element={<AboutUs />} />
+
+              {/* 
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/faqs" element={<FAQ />} />
-            <Route path="*" element={<NotFound />} /> 
             */}
             </Routes>
           </PageTransition>

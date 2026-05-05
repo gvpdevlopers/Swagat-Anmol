@@ -1,14 +1,21 @@
 import { useEffect, useState, useRef } from "react";
 import gsap from "gsap";
 import { FaBars, FaTimes, FaPhoneAlt } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const location = useLocation();
+
   const menuRef = useRef();
   const menuItemsRef = useRef([]);
+
+  // 🔥 underline refs
+  const underlineRef = useRef(null);
+  const navContainerRef = useRef(null);
+  const itemRefs = useRef([]);
 
   // Scroll background
   useEffect(() => {
@@ -25,7 +32,7 @@ export default function Navbar() {
       gsap.fromTo(
         menuRef.current,
         { y: "-100%" },
-        { y: "0%", duration: 0.7, ease: "power3.out" }
+        { y: "0%", duration: 0.7, ease: "power3.out" },
       );
 
       gsap.fromTo(
@@ -38,7 +45,7 @@ export default function Navbar() {
           delay: 0.2,
           duration: 0.6,
           ease: "power3.out",
-        }
+        },
       );
     } else {
       gsap.to(menuRef.current, {
@@ -49,15 +56,69 @@ export default function Navbar() {
     }
   }, [menuOpen]);
 
-  // ✅ ROUTES CONFIG
+  // ✅ NAV ITEMS (Home removed)
   const navItems = [
-    { name: "Home", path: "/" },
     { name: "Residences", path: "/residences" },
-    { name: "About", path: "/#about" },
-    { name: "Amenities", path: "/#amenities" },
+    { name: "About", path: "/about" },
     { name: "Gallery", path: "/#gallery" },
+    { name: "FAQ", path: "/faq" },
     { name: "Contact", path: "/#contact" },
   ];
+
+  // ✅ ACTIVE CHECK (supports hash + path)
+  const isActive = (path) => {
+    // reset active when on home
+    if (location.pathname === "/" && !location.hash) {
+      return false;
+    }
+
+    // hash sections (home page anchors)
+    if (path.includes("#")) {
+      return (
+        location.pathname === "/" && location.hash === path.replace("/", "")
+      );
+    }
+
+    // normal routes
+    return location.pathname === path;
+  };
+
+  // 🔥 UNDERLINE ANIMATION
+  const moveUnderline = () => {
+    const activeIndex = navItems.findIndex((item) => isActive(item.path));
+
+    if (activeIndex === -1) {
+      gsap.to(underlineRef.current, {
+        width: 0,
+        duration: 0.3,
+      });
+      return;
+    }
+    const activeEl = itemRefs.current[activeIndex];
+
+    if (!activeEl || !underlineRef.current) return;
+
+    const rect = activeEl.getBoundingClientRect();
+    const parentRect = navContainerRef.current.getBoundingClientRect();
+
+    gsap.to(underlineRef.current, {
+      x: rect.left - parentRect.left,
+      width: rect.width,
+      duration: 0.5,
+      ease: "power3.out",
+    });
+  };
+
+  // run on route change
+  useEffect(() => {
+    moveUnderline();
+  }, [location]);
+
+  // run on resize
+  useEffect(() => {
+    window.addEventListener("resize", moveUnderline);
+    return () => window.removeEventListener("resize", moveUnderline);
+  }, []);
 
   return (
     <>
@@ -73,47 +134,54 @@ export default function Navbar() {
         }}
       >
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-          
-          {/* LOGO (click → home) */}
-          <Link to="/" className="text-xl md:text-2xl font-semibold tracking-tight font-[Space_Grotesk]">
+          {/* LOGO */}
+          <Link
+            to="/"
+            className="text-xl md:text-2xl font-semibold font-[Space_Grotesk]"
+          >
             <span className="text-white">Swagat</span>{" "}
-            <span className="bg-gradient-to-r from-[#c89b7b] to-[#d4a98c] bg-clip-text text-transparent tracking-wide">
+            <span className="bg-gradient-to-r from-[#c89b7b] to-[#d4a98c] bg-clip-text text-transparent">
               Anmol
             </span>
           </Link>
 
           {/* DESKTOP NAV */}
-          <ul className="hidden md:flex gap-10 text-sm tracking-wide text-white font-[Space_Grotesk]">
-            {navItems.map((item) => (
-              <li
+          <div
+            ref={navContainerRef}
+            className="relative hidden md:flex gap-10 text-sm tracking-wide text-white font-[Space_Grotesk]"
+          >
+            {navItems.map((item, i) => (
+              <Link
                 key={item.name}
-                className="relative cursor-pointer group overflow-hidden"
+                to={item.path}
+                ref={(el) => (itemRefs.current[i] = el)}
+                className={`relative transition ${
+                  isActive(item.path)
+                    ? "text-[#c89b7b]"
+                    : "text-white hover:text-[#c89b7b]"
+                }`}
               >
-                <Link to={item.path}>
-                  <span className="block transition duration-300 group-hover:-translate-y-1 group-hover:text-[#c89b7b]">
-                    {item.name}
-                  </span>
-
-                  <span className="absolute left-0 bottom-0 w-0 h-[1px] bg-gradient-to-r from-[#c89b7b] to-[#d4a98c] transition-all duration-300 group-hover:w-full" />
-
-                  <span className="absolute inset-0 opacity-0 group-hover:opacity-10 bg-white blur-md transition duration-300" />
-                </Link>
-              </li>
+                {item.name}
+              </Link>
             ))}
-          </ul>
 
-          {/* CONTACT CTA */}
+            {/* 🔥 SLIDING UNDERLINE */}
+            <span
+              ref={underlineRef}
+              className="absolute bottom-[-6px] h-[2px] bg-gradient-to-r from-[#c89b7b] to-[#d4a98c] rounded-full"
+              style={{ width: 0 }}
+            />
+          </div>
+
+          {/* CTA */}
           <a
             href="tel:+919876543210"
-            className="hidden md:flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.2)] group transition hover:scale-[1.02]"
+            className="hidden md:flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 backdrop-blur-xl border border-white/10"
           >
             <div className="w-9 h-9 rounded-full bg-gradient-to-r from-[#c89b7b] to-[#d4a98c] flex items-center justify-center text-black">
               <FaPhoneAlt className="text-xs" />
             </div>
-
-            <span className="text-sm font-medium text-white group-hover:text-[#c89b7b]">
-              +91 98765 43210
-            </span>
+            <span className="text-sm text-white">+91 98765 43210</span>
           </a>
 
           {/* MOBILE ICON */}
@@ -140,14 +208,15 @@ export default function Navbar() {
             key={item.name}
             to={item.path}
             ref={(el) => (menuItemsRef.current[i] = el)}
-            className="cursor-pointer transition hover:text-[#c89b7b]"
+            className={`transition ${
+              isActive(item.path) ? "text-[#c89b7b]" : "hover:text-[#c89b7b]"
+            }`}
             onClick={() => setMenuOpen(false)}
           >
             {item.name}
           </Link>
         ))}
 
-        {/* MOBILE CTA */}
         <a
           href="tel:+919876543210"
           className="mt-6 flex items-center gap-3 px-5 py-3 rounded-full bg-white/5 backdrop-blur-xl border border-white/10"
@@ -155,7 +224,6 @@ export default function Navbar() {
           <div className="w-9 h-9 rounded-full bg-gradient-to-r from-[#c89b7b] to-[#d4a98c] flex items-center justify-center text-black">
             <FaPhoneAlt className="text-xs" />
           </div>
-
           <span className="text-base text-white">+91 98765 43210</span>
         </a>
       </div>

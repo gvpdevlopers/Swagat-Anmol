@@ -35,8 +35,9 @@ export default function Experience() {
       const slides = slidesRef.current.filter(Boolean);
       if (!slides.length) return;
 
-      // initial states
+      // ✅ INITIAL STATE FIX
       gsap.set(slides, { opacity: 0 });
+      gsap.set(slides[0], { opacity: 1 }); // FIRST SLIDE ALWAYS VISIBLE
       gsap.set(".exp-image", { scale: 1.1, y: 40 });
 
       const tl = gsap.timeline({
@@ -52,64 +53,66 @@ export default function Experience() {
         const image = slide.querySelector(".exp-image");
         const content = slide.querySelector(".exp-content");
 
-        // ENTER (fade + slight lift)
-        tl.to(
-          slide,
-          {
-            opacity: 1,
-            duration: 1,
-            ease: "power3.out",
-          },
-          i === 0 ? 0 : "+=0.4"
-        )
-
-          // IMAGE MOTION (cinematic)
-          .to(
-            image,
+        // ✅ ONLY FADE FOR NON-FIRST SLIDES
+        if (i !== 0) {
+          tl.to(
+            slide,
             {
-              scale: 1.2,
-              y: -40,
-              duration: 2,
-              ease: "none",
-            },
-            "<"
-          )
-
-          // TEXT REVEAL
-          .fromTo(
-            content.children,
-            {
-              y: 50,
-              opacity: 0,
-              filter: "blur(6px)",
-            },
-            {
-              y: 0,
               opacity: 1,
-              filter: "blur(0px)",
-              stagger: 0.12,
               duration: 1,
               ease: "power3.out",
             },
-            "<0.3"
-          )
+            "+=0.4"
+          );
+        }
 
-          // HOLD (important for storytelling)
-          .to({}, { duration: 0.8 })
+        // IMAGE MOTION
+        tl.to(
+          image,
+          {
+            scale: 1.2,
+            y: -40,
+            duration: 2.4,
+            ease: "none",
+          },
+          "<"
+        )
 
-          // EXIT
-          .to(
-            slide,
-            {
-              opacity: 0,
-              duration: 0.8,
-              ease: "power2.inOut",
-            },
-            "+=0.3"
-          )
+        // ✅ TEXT TIMING FIX
+        .fromTo(
+          content.children,
+          {
+            y: 50,
+            opacity: 0,
+            filter: "blur(6px)",
+          },
+          {
+            y: 0,
+            opacity: 1,
+            filter: "blur(0px)",
+            stagger: 0.12,
+            duration: 1,
+            ease: "power3.out",
+          },
+          i === 0 ? 0 : "<0.2"
+        )
 
-          // RESET image for next slide
-          .set(image, { scale: 1.1, y: 40 });
+        // HOLD
+        .to({}, { duration: 1 })
+
+        // EXIT
+        .to(
+          slide,
+          {
+            opacity: 0,
+            duration: 0.8,
+            ease: "power2.inOut",
+          },
+          "+=0.3"
+        )
+
+        // RESET IMAGE
+        .set(image, { scale: 1.1, y: 40 });
       });
     }, sectionRef);
 
