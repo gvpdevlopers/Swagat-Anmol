@@ -24,16 +24,28 @@ export default function AboutDeveloper() {
         ease: "power3.out",
       });
 
-      // RIGHT CARDS (clean animation)
+      // RIGHT CARDS
       gsap.from(".dev-card", {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top 75%",
         },
-        opacity: 1,
-        y: 0,
+        opacity: 0,
+        y: 60,
         stagger: 0.12,
         duration: 0.8,
+        ease: "power3.out",
+      });
+
+      // VIDEO REVEAL
+      gsap.from(".dev-video", {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+        opacity: 0,
+        scale: 0.95,
+        duration: 1,
         ease: "power3.out",
       });
 
@@ -105,36 +117,29 @@ export default function AboutDeveloper() {
         </div>
 
         {/* RIGHT */}
-        <div className="relative">
-          {/* PANEL */}
-          <div className="rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-8">
-            {/* GRID FIXED */}
-            <div className="grid grid-cols-2 gap-6">
-              {[
-                { icon: Building2, title: "10+", desc: "Projects Delivered" },
-                { icon: Users, title: "500+", desc: "Happy Families" },
-                { icon: Award, title: "Premium", desc: "Quality Standards" },
-                { icon: CheckCircle, title: "Trusted", desc: "Developer" },
-              ].map((item, i) => {
-                const Icon = item.icon;
-
-                return (
-                  <div
-                    key={i}
-                    className="dev-card p-6 rounded-2xl 
-                    bg-white/5 border border-white/10 
-                    transition-all duration-300
-                    hover:-translate-y-2 hover:shadow-xl"
-                  >
-                    <Icon size={22} className="text-[#c89b7b]" />
-
-                    <h3 className="mt-4 text-xl font-semibold">{item.title}</h3>
-
-                    <p className="text-white/60 text-sm">{item.desc}</p>
-                  </div>
-                );
-              })}
+        {/* RIGHT */}
+        <div className="relative flex items-center h-full">
+          <div className="w-full rounded-3xl border border-white/10 bg-white/[0.03] backdrop-blur-xl p-5 md:p-6">
+            {/* VIDEO CARD */}
+            <div className="dev-video relative rounded-2xl overflow-hidden border border-white/10 group">
+              {/* VIDEO */}
+              <div className="relative w-full pt-[56.25%]">
+                <iframe
+                  src="https://www.youtube.com/embed/s-XpZOBayJE"
+                  title="Swagat Developers"
+                  className="absolute top-0 left-0 w-full h-full"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              </div>
             </div>
+
+            {/* OPTIONAL SUB TEXT (balances height) */}
+            <p className="mt-6 text-white/50 text-sm leading-relaxed max-w-md">
+              A visual glimpse into the design philosophy, construction quality,
+              and lifestyle experience delivered across every Swagat project.
+            </p>
           </div>
         </div>
       </div>
