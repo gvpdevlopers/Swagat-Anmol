@@ -1,16 +1,16 @@
-import Hero from "../sections/Hero";
-import About from "../sections/About";
-import Highlights from "../sections/Highlights";
-import Statement from "../sections/Statement";
-import FloorPlans from "../sections/FloorPlans";
-import BigTextScroll from "../sections/BigTextScroll";
-import Experience from "../sections/Experience";
-import Showcase from "../sections/Showcase";
-import WhyChoose from "../sections/WhyChoose";
-import AmenitiesPreview from "../sections/AmenitiesPreview";
-import TextReveal from "../sections/TextReveal";
-import LocationConnectivity from "../sections/LocationConnectivity";
-import CTA from "../sections/CTA";
+import Hero from "../sections/home/Hero";
+import About from "../sections/home/About";
+import Highlights from "../sections/home/Highlights";
+import Statement from "../sections/home/Statement";
+import FloorPlans from "../sections/home/FloorPlans";
+import BigTextScroll from "../sections/home/BigTextScroll";
+import Experience from "../sections/home/Experience";
+import Showcase from "../sections/home/Showcase";
+import WhyChoose from "../sections/home/WhyChoose";
+import AmenitiesPreview from "../sections/home/AmenitiesPreview";
+import TextReveal from "../sections/home/TextReveal";
+import LocationConnectivity from "../sections/home/LocationConnectivity";
+import CTA from "../sections/home/CTA";
 
 export default function Home() {
   return (
@@ -27,7 +27,7 @@ export default function Home() {
       <AmenitiesPreview />
       <TextReveal />
       <LocationConnectivity />
-      <CTA /> 
+      <CTA />
     </>
   );
 }

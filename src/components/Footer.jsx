@@ -185,7 +185,7 @@ export default function Footer() {
                 className="flex gap-3 hover:text-white transition"
               >
                 <FaMapMarkerAlt className="mt-1 text-gray-500" />
-                Palanpur, Surat
+                Palanpur
               </a>
             </li>
 
@@ -217,7 +217,13 @@ export default function Footer() {
       {/* BOTTOM */}
       <div className="relative mt-20">
         {/* BG TEXT */}
-        <div className="pointer-events-none absolute inset-0 flex items-end justify-center opacity-[0.04] hidden sm:flex">
+        <div
+          className="pointer-events-none
+  absolute left-0 right-0 bottom-16
+  flex justify-center
+  opacity-[0.04]
+  hidden sm:flex"
+        >
           <div ref={bgTextRef} className="text-center">
             <h1 className="font-[Space_Grotesk] font-semibold text-[clamp(60px,12vw,200px)] leading-[0.8]">
               SWAGAT

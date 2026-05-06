@@ -12,8 +12,8 @@ import Residences from "./pages/Residences";
 import NotFound from "./pages/NotFound";
 import FAQ from "./pages/FAQ";
 import AboutUs from "./pages/AboutUs";
-// import Gallery from "./pages/Gallery";
-// import Contact from "./pages/Contact";
+import Gallery from "./pages/Gallery";
+import Contact from "./pages/Contact";
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -44,14 +44,11 @@ export default function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/residences" element={<Residences />} />
+              <Route path="/about" element={<AboutUs />} />
+              <Route path="/gallery" element={<Gallery />} />
               <Route path="/faq" element={<FAQ />} />
+              <Route path="/contact" element={<Contact />} />
               <Route path="*" element={<NotFound />} />
-            <Route path="/about" element={<AboutUs />} />
-
-              {/* 
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/contact" element={<Contact />} />
-            */}
             </Routes>
           </PageTransition>
           <Footer />

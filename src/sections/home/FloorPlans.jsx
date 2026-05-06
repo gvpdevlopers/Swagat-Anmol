@@ -3,9 +3,9 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FaTimes } from "react-icons/fa";
 
-import plan1 from "../assets/2 BHK Unit Plan.jpeg";
-import plan2 from "../assets/3 BHK Unit Plan.jpeg";
-import plan3 from "../assets/3 BHK Penthouse.jpeg";
+import plan1 from "../../assets/2 BHK Unit Plan.jpeg";
+import plan2 from "../../assets/3 BHK Unit Plan.jpeg";
+import plan3 from "../../assets/3 BHK Penthouse.jpeg";
 
 gsap.registerPlugin(ScrollTrigger);
 

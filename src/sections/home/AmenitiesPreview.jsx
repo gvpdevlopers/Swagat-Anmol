@@ -2,10 +2,10 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import gym from "../assets/amenities-gym-1.jpeg";
-import garden from "../assets/amenities-garden-2.jpeg";
-import kids from "../assets/amenities-kids-3.jpeg";
-import game from "../assets/amenities-game-4.jpeg";
+import gym from "../../assets/amenities-gym-1.jpeg";
+import garden from "../../assets/amenities-garden-2.jpeg";
+import kids from "../../assets/amenities-kids-3.jpeg";
+import game from "../../assets/amenities-game-4.jpeg";
 
 gsap.registerPlugin(ScrollTrigger);
 

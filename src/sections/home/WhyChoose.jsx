@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
-import img1 from "../assets/why-choose-1.jpeg";
-import img2 from "../assets/why-choose-2.jpeg";
-import img3 from "../assets/why-choose-3.jpeg";
+import img1 from "../../assets/why-choose-1.jpeg";
+import img2 from "../../assets/why-choose-2.jpeg";
+import img3 from "../../assets/why-choose-3.jpeg";
 
 const features = [
   {

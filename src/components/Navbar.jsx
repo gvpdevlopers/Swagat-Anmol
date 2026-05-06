@@ -60,9 +60,9 @@ export default function Navbar() {
   const navItems = [
     { name: "Residences", path: "/residences" },
     { name: "About", path: "/about" },
-    { name: "Gallery", path: "/#gallery" },
+    { name: "Gallery", path: "/gallery" },
     { name: "FAQ", path: "/faq" },
-    { name: "Contact", path: "/#contact" },
+    { name: "Contact", path: "/contact" },
   ];
 
   // ✅ ACTIVE CHECK (supports hash + path)

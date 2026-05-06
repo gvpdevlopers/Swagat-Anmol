@@ -2,11 +2,11 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import aboutMain from "../assets/about-main.jpeg";
-import aboutSmall from "../assets/about-small.jpeg";
+import aboutMain from "../../assets/about-main.jpeg";
+import aboutSmall from "../../assets/about-small.jpeg";
 
-import decor1 from "../assets/decor-2.svg";
-import decor2 from "../assets/decor-1.svg";
+import decor1 from "../../assets/decor-2.svg";
+import decor2 from "../../assets/decor-1.svg";
 
 gsap.registerPlugin(ScrollTrigger);
 
