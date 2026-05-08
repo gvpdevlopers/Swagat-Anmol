@@ -76,26 +76,42 @@ export default function AboutHero() {
         src={heroImg}
         alt="About Swagat Anmol"
         onLoad={() => setLoaded(true)}
-        className="absolute w-full h-full object-cover will-change-transform"
+        className="absolute w-full h-full
+object-cover will-change-transform
+brightness-[0.8] contrast-[1.06]"
       />
 
-      {/* OVERLAY */}
+      {/* MAIN OVERLAY */}
       <div
         ref={overlayRef}
-        className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"
+        className="absolute inset-0
+  bg-gradient-to-b
+  from-black/80
+  via-black/55
+  to-black/80"
+      />
+
+      {/* VIGNETTE */}
+      <div
+        className="absolute inset-0
+  bg-[radial-gradient(circle_at_center,transparent_10%,rgba(0,0,0,0.45)_100%)]"
       />
 
       {/* CONTENT */}
       <div className="relative z-10 h-full flex items-center justify-center text-center px-5">
-        <div className="max-w-5xl">
+        <div className="max-w-6xl">
           {/* TITLE */}
           <h1
             ref={titleRef}
-            className="font-[Space_Grotesk] text-4xl sm:text-5xl md:text-7xl font-semibold leading-[1.1] tracking-tight"
+            className="font-[Space_Grotesk]
+text-4xl sm:text-5xl md:text-7xl
+font-semibold leading-[1.02]
+tracking-tight
+drop-shadow-[0_6px_35px_rgba(0,0,0,0.75)]"
           >
-            <span className="block text-white/90">Built with Vision.</span>
+            <span className="block text-white">Built with Vision.</span>
 
-            <span className="block bg-gradient-to-r from-[#c89b7b] to-[#e0bfa3] bg-clip-text text-transparent drop-shadow-[0_10px_30px_rgba(200,155,123,0.2)]">
+            <span className="block bg-gradient-to-r from-[#c89b7b] to-[#e0bfa3] bg-clip-text text-transparent drop-shadow-[0_6px_24px_rgba(0,0,0,0.45)]">
               Designed for Living.
             </span>
           </h1>
@@ -103,7 +119,12 @@ export default function AboutHero() {
           {/* SUBTITLE */}
           <p
             ref={subtitleRef}
-            className="mt-5 text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed"
+            className="mt-6
+text-base sm:text-lg md:text-xl
+text-white/75
+max-w-3xl mx-auto
+leading-relaxed
+drop-shadow-[0_4px_18px_rgba(0,0,0,0.45)]"
           >
             Discover the story behind Swagat Anmol - a thoughtfully crafted
             residential experience by Swagat Developers, where design, quality,

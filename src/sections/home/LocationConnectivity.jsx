@@ -2,20 +2,20 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import locationImg from "../../assets/masterplan.webp";
+import locationImg from "../../assets/location-connectivity.jpeg";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const points = [
-  { name: "Jogging Track", x: "48%", y: "56%" },
+  { name: "Jogging Track", x: "48%", y: "10%" },
 
   // moved LEFT toward center
-  { name: "Kids Play Area", x: "52%", y: "64%" },
+  { name: "Kids Play Area", x: "70%", y: "20%" },
 
   { name: "Podium Garden", x: "40%", y: "66%" },
 
   // slightly centered & aligned with podium area
-  { name: "Yoga Deck", x: "46%", y: "60%" },
+  { name: "Yoga Deck", x: "75%", y: "60%" },
 ];
 
 const connectivity = [
@@ -120,7 +120,7 @@ export default function LocationConnectivity() {
               alt="Location"
               className="w-full h-[360px] md:h-[600px] object-cover"
             />
-            <div className="absolute inset-0 bg-black/30" />
+            <div className="absolute inset-0 "/>
           </div>
 
           {/* PINS */}

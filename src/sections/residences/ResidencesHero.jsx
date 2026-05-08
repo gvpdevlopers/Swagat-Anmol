@@ -87,13 +87,25 @@ export default function ResidencesHero() {
         src={residencesHero}
         alt="Residences at Swagat Anmol"
         onLoad={() => setLoaded(true)}
-        className="absolute w-full h-full object-cover will-change-transform"
+        className="absolute w-full h-full
+object-cover will-change-transform
+brightness-[0.78] contrast-[1.08]"
       />
 
-      {/* OVERLAY */}
+      {/* MAIN OVERLAY */}
       <div
         ref={overlayRef}
-        className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black/80"
+        className="absolute inset-0
+  bg-gradient-to-b
+  from-black/85
+  via-black/60
+  to-black/85"
+      />
+
+      {/* CINEMATIC VIGNETTE */}
+      <div
+        className="absolute inset-0
+  bg-[radial-gradient(circle_at_center,transparent_10%,rgba(0,0,0,0.5)_100%)]"
       />
 
       {/* CONTENT */}
@@ -102,10 +114,13 @@ export default function ResidencesHero() {
           {/* SMALL BADGE */}
           <div
             ref={badgeRef}
-            className="mb-6 inline-block px-4 py-1 rounded-full 
-            text-xs tracking-widest uppercase
-            border border-white/20 text-white/70
-            backdrop-blur-md bg-white/5"
+            className="mb-6 inline-block
+px-4 py-1.5 rounded-full
+text-[10px] tracking-[0.35em] uppercase
+border border-white/10
+text-white/65
+backdrop-blur-xl bg-white/[0.04]
+shadow-[0_4px_20px_rgba(0,0,0,0.25)]"
           >
             Residences at Swagat Anmol
           </div>
@@ -113,11 +128,15 @@ export default function ResidencesHero() {
           {/* TITLE */}
           <h1
             ref={titleRef}
-            className="font-[Space_Grotesk] text-4xl sm:text-5xl md:text-7xl font-semibold leading-[1.1] tracking-tight"
+            className="font-[Space_Grotesk]
+text-4xl sm:text-5xl md:text-7xl
+font-semibold leading-[1.02]
+tracking-tight
+drop-shadow-[0_6px_35px_rgba(0,0,0,0.75)]"
           >
-            <span className="block text-white/90">Crafted Spaces for</span>
+            <span className="block text-white">Crafted Spaces for</span>
 
-            <span className="block bg-gradient-to-r from-[#c89b7b] to-[#e0bfa3] bg-clip-text text-transparent drop-shadow-[0_10px_30px_rgba(200,155,123,0.2)]">
+            <span className="block bg-gradient-to-r from-[#c89b7b] to-[#e0bfa3] bg-clip-text text-transparent drop-shadow-[0_8px_30px_rgba(0,0,0,0.45)]">
               Elevated Living
             </span>
           </h1>
@@ -125,7 +144,12 @@ export default function ResidencesHero() {
           {/* SUBTITLE */}
           <p
             ref={subtitleRef}
-            className="mt-6 text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed"
+            className="mt-7
+text-base sm:text-lg md:text-xl
+text-white/75
+max-w-2xl mx-auto
+leading-relaxed
+drop-shadow-[0_4px_20px_rgba(0,0,0,0.55)]"
           >
             Explore intelligently designed 2 & 3 BHK residences and exclusive
             penthouses crafted with precision, comfort, and timeless elegance.

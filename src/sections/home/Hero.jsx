@@ -76,13 +76,26 @@ export default function Hero() {
         src={heroImg}
         alt="Swagat Anmol"
         onLoad={() => setLoaded(true)}
-        className="absolute w-full h-full object-cover will-change-transform"
+        className="absolute w-full h-full
+object-cover will-change-transform
+brightness-[0.82] contrast-[1.05]"
       />
 
       {/* OVERLAY (better gradient for premium contrast) */}
+      {/* MAIN DARK OVERLAY */}
       <div
         ref={overlayRef}
-        className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"
+        className="absolute inset-0
+  bg-gradient-to-b
+  from-black/75
+  via-black/55
+  to-black/75"
+      />
+
+      {/* CINEMATIC VIGNETTE */}
+      <div
+        className="absolute inset-0
+  bg-[radial-gradient(circle_at_center,transparent_10%,rgba(0,0,0,0.45)_100%)]"
       />
 
       {/* CONTENT */}
@@ -91,7 +104,11 @@ export default function Hero() {
           {/* TITLE */}
           <h1
             ref={titleRef}
-            className="font-[Space_Grotesk] text-4xl sm:text-5xl md:text-7xl font-semibold leading-[1.1] tracking-tight"
+            className="font-[Space_Grotesk]
+text-4xl sm:text-5xl md:text-7xl
+font-semibold leading-[1.02]
+tracking-tight
+drop-shadow-[0_4px_30px_rgba(0,0,0,0.65)]"
           >
             <span className="block text-white/90">Where Elegance Meets</span>
 
@@ -103,7 +120,12 @@ export default function Hero() {
           {/* SUBTITLE */}
           <p
             ref={subtitleRef}
-            className="mt-5 text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed"
+            className="mt-6
+text-base sm:text-lg md:text-xl
+text-white/75
+max-w-2xl mx-auto
+leading-relaxed
+drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
           >
             Discover thoughtfully designed 2 & 3 BHK residences at Swagat Anmol,
             Palanpur.

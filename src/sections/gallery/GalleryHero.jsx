@@ -88,18 +88,39 @@ export default function GalleryHero() {
         src={heroImg}
         alt="Swagat Anmol Gallery"
         onLoad={() => setLoaded(true)}
-        className="absolute w-full h-full object-cover will-change-transform"
+        className="absolute w-full h-full
+object-cover will-change-transform
+brightness-[0.76]
+contrast-[1.08]
+saturate-[1.05]"
       />
 
-      {/* OVERLAY */}
+      {/* MAIN OVERLAY */}
       <div
         ref={overlayRef}
-        className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/50 to-black/80"
+        className="absolute inset-0
+  bg-gradient-to-b
+  from-black/85
+  via-black/60
+  to-black/90"
+      />
+
+      {/* CINEMATIC VIGNETTE */}
+      <div
+        className="absolute inset-0
+  bg-[radial-gradient(circle_at_center,transparent_8%,rgba(0,0,0,0.5)_100%)]"
       />
 
       {/* GOLD GLOW */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-[#c89b7b]/15 blur-[140px] rounded-full" />
+        <div
+          className="absolute
+  top-[18%] left-1/2 -translate-x-1/2
+  w-[620px] h-[620px]
+  bg-[#c89b7b]/12
+  blur-[170px]
+  rounded-full"
+        />
       </div>
 
       {/* CONTENT */}
@@ -108,12 +129,20 @@ export default function GalleryHero() {
           {/* SMALL LABEL */}
           <div
             ref={labelRef}
-            className="mb-6 inline-block px-4 py-1 rounded-full 
-            text-xs tracking-widest uppercase
-            border border-white/20 text-white/70
-            backdrop-blur-md bg-white/5"
+            className="mb-7 inline-flex items-center gap-2
+px-5 py-2 rounded-full
+border border-white/10
+bg-white/[0.04]
+backdrop-blur-xl
+shadow-[0_6px_24px_rgba(0,0,0,0.25)]"
           >
-            <p className="font-[Space_Grotesk] tracking-[0.35em] uppercase text-xs sm:text-xs  text-white/70">
+            <p
+              className="font-[Space_Grotesk]
+tracking-[0.38em]
+uppercase
+text-[10px]
+text-white/65"
+            >
               Swagat Anmol Gallery
             </p>
           </div>
@@ -121,11 +150,16 @@ export default function GalleryHero() {
           {/* TITLE */}
           <h1
             ref={titleRef}
-            className="font-[Space_Grotesk] text-4xl sm:text-5xl md:text-7xl font-semibold leading-[1.1] tracking-tight"
+            className="font-[Space_Grotesk]
+text-4xl sm:text-5xl md:text-7xl
+font-semibold
+leading-[1.02]
+tracking-tight
+drop-shadow-[0_6px_35px_rgba(0,0,0,0.75)]"
           >
-            <span className="block text-white/90">Spaces Crafted</span>
+            <span className="block text-white">Spaces Crafted</span>
 
-            <span className="block bg-gradient-to-r from-[#c89b7b] to-[#e0bfa3] bg-clip-text text-transparent drop-shadow-[0_10px_30px_rgba(200,155,123,0.2)]">
+            <span className="block bg-gradient-to-r from-[#c89b7b] to-[#e0bfa3] bg-clip-text text-transparent drop-shadow-[0_6px_24px_rgba(0,0,0,0.45)]">
               For Elevated Living
             </span>
           </h1>
@@ -133,7 +167,12 @@ export default function GalleryHero() {
           {/* SUBTITLE */}
           <p
             ref={subtitleRef}
-            className="mt-6 text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed"
+            className="mt-7
+text-base sm:text-lg md:text-xl
+text-white/75
+max-w-3xl mx-auto
+leading-relaxed
+drop-shadow-[0_4px_18px_rgba(0,0,0,0.45)]"
           >
             A visual journey through timeless architecture, luxurious interiors,
             curated amenities, and the refined lifestyle experience of Swagat

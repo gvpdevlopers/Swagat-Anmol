@@ -58,6 +58,7 @@ export default function Navbar() {
 
   // ✅ NAV ITEMS (Home removed)
   const navItems = [
+    { name: "Home", path: "/" },
     { name: "Residences", path: "/residences" },
     { name: "About", path: "/about" },
     { name: "Gallery", path: "/gallery" },
