@@ -149,6 +149,7 @@ export default function Specifications() {
 
   return (
     <section
+    id="residance-specifications"
       ref={sectionRef}
       className="relative py-20 md:py-32 pb-24 text-white overflow-hidden"
       style={{
@@ -227,7 +228,20 @@ export default function Specifications() {
                 className="mt-8 flex flex-col sm:flex-row gap-3"
               >
                 {/* PRIMARY */}
+                
                 <button
+                  onClick={() => {
+              const section = document.getElementById(
+                "residance-amenities",
+              );
+
+              if (section) {
+                section.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                });
+              }
+            }}
                   className="relative px-7 py-3 rounded-full text-sm font-[Space_Grotesk]
     overflow-hidden group cursor-pointer
     bg-gradient-to-r from-[#c89b7b] to-[#e0bfa3] text-black
@@ -242,11 +256,11 @@ export default function Specifications() {
       transition-all duration-1000 ease-out"
                   />
 
-                  <span className="relative z-10">Download Brochure</span>
+                  <span className="relative z-10">Experience Premium Craftsmanship</span>
                 </button>
 
                 {/* SECONDARY */}
-                <button
+                {/* <button
                   className="relative px-7 py-3 rounded-full text-sm font-[Space_Grotesk]
     overflow-hidden group cursor-pointer
     backdrop-blur-xl bg-white/10 border border-white/20
@@ -256,7 +270,6 @@ export default function Specifications() {
     hover:shadow-[0_10px_40px_rgba(200,155,123,0.25)]
     active:scale-95"
                 >
-                  {/* glow */}
                   <span
                     className="absolute inset-0 bg-gradient-to-r 
       from-[#c89b7b]/20 to-[#d4a98c]/20 
@@ -264,7 +277,6 @@ export default function Specifications() {
       transition duration-500"
                   />
 
-                  {/* shimmer */}
                   <span
                     className="absolute top-0 left-[-120%] w-[60%] h-full 
       bg-gradient-to-r from-transparent via-white/30 to-transparent 
@@ -275,7 +287,7 @@ export default function Specifications() {
                   <span className="relative z-10 text-white group-hover:text-[#c89b7b] transition">
                     Book Site Visit
                   </span>
-                </button>
+                </button> */}
               </div>
             </div>
           </div>

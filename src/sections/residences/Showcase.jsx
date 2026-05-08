@@ -211,6 +211,7 @@ export default function Showcase() {
 
   return (
     <section
+      id="residences-showcase"
       ref={sectionRef}
       onMouseMove={handleMouseMove}
       className="relative bg-black py-28 md:py-44 overflow-hidden"

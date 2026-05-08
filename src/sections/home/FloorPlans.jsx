@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FaTimes } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 import plan1 from "../../assets/2 BHK Unit Plan.jpeg";
 import plan2 from "../../assets/3 BHK Unit Plan.jpeg";
@@ -147,22 +148,25 @@ export default function FloorPlans() {
                     <p className="mt-3 text-black/60 font-[Inter]">
                       {plan.desc}
                     </p>
-
-                    <button
-                      onClick={() => setActivePlan(plan)}
-                      className="mt-6 px-6 py-3 rounded-full text-sm font-[Space_Grotesk]
+                    <Link to="/residences">
+                      <button
+                        onClick={() => setActivePlan(plan)}
+                        className="mt-6 px-6 py-3 rounded-full text-sm font-[Space_Grotesk]
   relative overflow-hidden group cursor-pointer
   bg-white border border-black/20 text-black/80
   shadow-[0_6px_20px_rgba(0,0,0,0.08)]
   transition-all duration-300
   hover:border-[#c89b7b] hover:text-[#c89b7b]
   hover:shadow-[0_10px_30px_rgba(200,155,123,0.2)]"
-                    >
-                      {/* light shimmer */}
-                      <span className="absolute top-0 left-[-120%] w-[60%] h-full bg-gradient-to-r from-transparent via-black/10 to-transparent rotate-12 group-hover:left-[120%] transition-all duration-1000" />
+                      >
+                        {/* light shimmer */}
+                        <span className="absolute top-0 left-[-120%] w-[60%] h-full bg-gradient-to-r from-transparent via-black/10 to-transparent rotate-12 group-hover:left-[120%] transition-all duration-1000" />
 
-                      <span className="relative z-10">View Floor Plan →</span>
-                    </button>
+                        <span className="relative z-10">
+                          Explore Configurations →
+                        </span>
+                      </button>
+                    </Link>
                   </div>
                 </div>
               );

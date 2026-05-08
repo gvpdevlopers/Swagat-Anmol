@@ -67,6 +67,7 @@ export default function AboutDeveloper() {
 
   return (
     <section
+    id="about-dev"
       ref={sectionRef}
       className="relative py-24 md:py-32 bg-[#020617] text-white overflow-hidden"
     >

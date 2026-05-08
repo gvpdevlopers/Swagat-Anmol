@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 
 import experienceImage from "../../assets/experience-2.webp";
+import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -324,6 +325,16 @@ export default function VisitExperience() {
             <div className="mt-12 flex flex-wrap gap-4">
               {/* PRIMARY */}
               <button
+                onClick={() => {
+                  const section = document.getElementById("contact-form");
+
+                  if (section) {
+                    section.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                    });
+                  }
+                }}
                 className="relative px-8 py-4 rounded-full
                 font-[Space_Grotesk] text-sm
                 overflow-hidden group
@@ -348,8 +359,9 @@ export default function VisitExperience() {
               </button>
 
               {/* SECONDARY */}
-              <button
-                className="px-8 py-4 rounded-full
+              <Link to="/gallery">
+                <button
+                  className="px-8 py-4 rounded-full
                 font-[Space_Grotesk] text-sm
                 border border-black/10
                 text-[#071a33]
@@ -358,9 +370,10 @@ export default function VisitExperience() {
                 transition-all duration-300
                 bg-white/70 backdrop-blur-xl
                 hover:cursor-pointer"
-              >
-                Explore Residences →
-              </button>
+                >
+                  Explore Residences →
+                </button>
+              </Link>
             </div>
           </div>
         </div>

@@ -33,19 +33,25 @@ export default function Experience() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       const slides = slidesRef.current.filter(Boolean);
+
       if (!slides.length) return;
 
-      // ✅ INITIAL STATE FIX
+      // INITIAL STATES
       gsap.set(slides, { opacity: 0 });
-      gsap.set(slides[0], { opacity: 1 }); // FIRST SLIDE ALWAYS VISIBLE
-      gsap.set(".exp-image", { scale: 1.1, y: 40 });
+      gsap.set(slides[0], { opacity: 1 });
+
+      gsap.set(".exp-image", {
+        scale: 1.08,
+        y: 30,
+      });
 
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: "+=250%",
-          scrub: 1.2,
+          end: "+=360%",
+          scrub: 1.8,
+          pin: false,
         },
       });
 
@@ -53,66 +59,73 @@ export default function Experience() {
         const image = slide.querySelector(".exp-image");
         const content = slide.querySelector(".exp-content");
 
-        // ✅ ONLY FADE FOR NON-FIRST SLIDES
+        // FADE IN FOR NON-FIRST SLIDES
         if (i !== 0) {
           tl.to(
             slide,
             {
               opacity: 1,
-              duration: 1,
-              ease: "power3.out",
+              duration: 1.4,
+              ease: "power2.out",
             },
-            "+=0.4"
+            "+=0.6",
           );
         }
 
-        // IMAGE MOTION
+        // IMAGE PARALLAX
         tl.to(
           image,
           {
-            scale: 1.2,
-            y: -40,
-            duration: 2.4,
+            scale: 1.18,
+            y: -35,
+            duration: 3,
             ease: "none",
           },
-          "<"
-        )
+          "<",
+        );
 
-        // ✅ TEXT TIMING FIX
-        .fromTo(
+        // TEXT REVEAL
+        tl.fromTo(
           content.children,
           {
-            y: 50,
+            y: 55,
             opacity: 0,
-            filter: "blur(6px)",
+            filter: "blur(8px)",
           },
           {
             y: 0,
             opacity: 1,
             filter: "blur(0px)",
-            stagger: 0.12,
-            duration: 1,
+            stagger: 0.14,
+            duration: 1.2,
             ease: "power3.out",
           },
-          i === 0 ? 0 : "<0.2"
-        )
 
-        // HOLD
-        .to({}, { duration: 1 })
+          // IMPORTANT FIX
+          i === 0 ? "+=0.25" : "<0.35",
+        );
 
-        // EXIT
-        .to(
-          slide,
-          {
-            opacity: 0,
-            duration: 0.8,
-            ease: "power2.inOut",
-          },
-          "+=0.3"
-        )
+        // HOLD TIME
+        tl.to({}, { duration: 1.8 });
+
+        // FADE OUT
+        if (i !== slides.length - 1) {
+          tl.to(
+            slide,
+            {
+              opacity: 0,
+              duration: 1.2,
+              ease: "power2.inOut",
+            },
+            "+=0.4",
+          );
+        }
 
         // RESET IMAGE
-        .set(image, { scale: 1.1, y: 40 });
+        tl.set(image, {
+          scale: 1.08,
+          y: 30,
+        });
       });
     }, sectionRef);
 

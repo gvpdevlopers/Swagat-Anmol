@@ -18,6 +18,7 @@ import {
   ArrowUp,
   Bus,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -100,6 +101,7 @@ export default function Amenities() {
 
   return (
     <section
+    id="residance-amenities"
       ref={sectionRef}
       className="relative py-24 md:py-30 bg-black text-white"
     >
@@ -183,6 +185,7 @@ export default function Amenities() {
 
                 {/* CTA */}
                 <div className="mt-10">
+                  <Link to="/gallery">
                   <button
                     className="relative px-7 py-3 rounded-full text-sm font-[Space_Grotesk]
             overflow-hidden group cursor-pointer
@@ -198,9 +201,10 @@ export default function Amenities() {
                     <span className="absolute top-0 left-[-120%] w-[60%] h-full bg-gradient-to-r from-transparent via-white/30 to-transparent rotate-12 group-hover:left-[120%] transition-all duration-1000 ease-out" />
 
                     <span className="relative z-10 text-white group-hover:text-[#c89b7b] transition">
-                      Explore Residences
+                      Explore Lifestyle Amenities
                     </span>
                   </button>
+                  </Link>
                 </div>
               </div>
             </div>

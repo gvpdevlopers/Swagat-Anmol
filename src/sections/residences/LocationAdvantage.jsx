@@ -9,6 +9,7 @@ import {
   Landmark,
   MapPin,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -173,7 +174,64 @@ export default function LocationAdvantage() {
           ))}
         </div>
       </div>
+      {/* CTA */}
+      <div className="mt-20 flex justify-center px-6">
+        <Link to="/contact">
+          <button
+            className="relative px-8 md:px-10 py-4 rounded-full
+      text-sm md:text-[15px]
+      font-[Space_Grotesk]
+      overflow-hidden group cursor-pointer
+      backdrop-blur-xl
+      bg-white/70
+      border border-black/10
+      shadow-[0_10px_40px_rgba(0,0,0,0.08)]
+      transition-all duration-500
+      hover:border-[#c89b7b]/50
+      hover:bg-white
+      hover:shadow-[0_12px_50px_rgba(200,155,123,0.18)]"
+          >
+            {/* SOFT GLOW */}
+            <span
+              className="absolute inset-0
+        bg-gradient-to-r
+        from-[#c89b7b]/10
+        to-[#d4a98c]/10
+        opacity-0
+        group-hover:opacity-100
+        transition duration-500"
+            />
 
+            {/* SHIMMER */}
+            <span
+              className="absolute top-0 left-[-120%]
+        w-[60%] h-full
+        bg-gradient-to-r
+        from-transparent via-white/60 to-transparent
+        rotate-12
+        group-hover:left-[120%]
+        transition-all duration-1000 ease-out"
+            />
+
+            {/* TEXT */}
+            <span
+              className="relative z-10
+        inline-flex items-center gap-3
+        text-[#071a33]
+        group-hover:text-[#c89b7b]
+        transition duration-300"
+            >
+              Plan Your Visit
+              <span
+                className="transition-transform duration-300
+          group-hover:translate-x-1"
+              >
+                →
+              </span>
+            </span>
+          </button>
+        </Link>
+      </div>
       {/* MOBILE MAP */}
       <div className="md:hidden mt-16 px-6">
         <div className="relative rounded-2xl overflow-hidden border border-black/10">

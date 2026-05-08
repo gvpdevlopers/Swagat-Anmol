@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import contactHero from "../../assets/hero.webp";
+import { Link } from "react-router-dom";
 
 export default function ContactHero() {
   const titleRef = useRef();
@@ -138,6 +139,16 @@ export default function ContactHero() {
           >
             {/* PRIMARY */}
             <button
+               onClick={() => {
+                const section = document.getElementById("contact-form");
+
+                if (section) {
+                  section.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
+                }
+              }}
               className="relative px-9 py-4 rounded-full text-sm font-[Space_Grotesk]
               overflow-hidden group cursor-pointer
               backdrop-blur-xl bg-white/10 border border-white/20
@@ -157,12 +168,13 @@ export default function ContactHero() {
             </button>
 
             {/* SECONDARY */}
+            <Link to="/residences">
             <button
               className="relative px-6 py-3 text-sm font-[Space_Grotesk]
               text-white/80 group cursor-pointer transition"
             >
               <span className="inline-flex items-center gap-2 group-hover:text-[#c89b7b] transition">
-                Talk To Our Advisors 
+               Explore Residences
                 <span className="inline-block transform transition-transform duration-300 group-hover:translate-x-1">
                   →
                 </span>
@@ -170,6 +182,7 @@ export default function ContactHero() {
 
               <span className="absolute left-0 bottom-0 h-[1px] w-0 bg-[#c89b7b] transition-all duration-500 group-hover:w-full" />
             </button>
+            </Link>
           </div>
         </div>
       </div>

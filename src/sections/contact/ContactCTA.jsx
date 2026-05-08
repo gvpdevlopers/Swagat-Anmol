@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { Phone, ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -173,23 +174,24 @@ export default function ContactCTA() {
             </a>
 
             {/* SECONDARY */}
-            <a
-              href="/residences"
-              className="w-full sm:w-auto
-              px-8 py-4 rounded-full
-              font-[Space_Grotesk] text-sm
-              border border-white/10
+            <Link to="/residences">
+              <button
+                className="w-full sm:w-auto
+                px-8 py-4 rounded-full
+                font-[Space_Grotesk] text-sm
+                border border-white/10
               bg-white/[0.03]
               text-white/75
               transition-all duration-300
               hover:border-[#c89b7b]/60
               hover:text-[#c89b7b]"
-            >
-              <span className="flex items-center justify-center gap-2">
-                Explore Residences
-                <ArrowUpRight size={16} />
-              </span>
-            </a>
+              >
+                <span className="flex items-center justify-center gap-2">
+                  Explore Residences
+                  <ArrowUpRight size={16} />
+                </span>
+              </button>
+            </Link>
           </div>
         </div>
       </div>

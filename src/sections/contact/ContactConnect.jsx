@@ -132,6 +132,7 @@ export default function ContactConnect() {
 
   return (
     <section
+    id="contact-form"
       ref={sectionRef}
       className="relative py-24 md:py-36 bg-[#020617] overflow-hidden"
     >

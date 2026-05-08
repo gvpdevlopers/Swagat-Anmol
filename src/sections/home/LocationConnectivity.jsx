@@ -204,24 +204,56 @@ export default function LocationConnectivity() {
             ref={(el) => (contentRef.current[contentRef.current.length] = el)}
             className="mt-8 md:mt-10"
           >
-            <button
-              className="relative px-7 py-3 rounded-full text-sm font-[Space_Grotesk] 
-  overflow-hidden group cursor-pointer
-  backdrop-blur-xl bg-white/10 border border-white/20
-  shadow-[0_8px_30px_rgba(0,0,0,0.25)] transition-all duration-300
-  hover:border-[#c89b7b]/60 hover:shadow-[0_10px_40px_rgba(200,155,123,0.25)]"
+            <a
+              href="https://goo.gl/maps/V5Ucs9E3ycMwcDKp8?g_st=ac"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              {/* gradient glow */}
-              <span className="absolute inset-0 bg-gradient-to-r from-[#c89b7b]/20 to-[#d4a98c]/20 opacity-0 group-hover:opacity-100 transition duration-500" />
+              <button
+                className="relative px-7 py-3 rounded-full text-sm font-[Space_Grotesk] 
+      overflow-hidden group cursor-pointer
+      backdrop-blur-xl bg-white/10 border border-white/20
+      shadow-[0_8px_30px_rgba(0,0,0,0.25)] transition-all duration-300
+      hover:border-[#c89b7b]/60
+      hover:shadow-[0_10px_40px_rgba(200,155,123,0.25)]"
+              >
+                {/* GRADIENT GLOW */}
+                <span
+                  className="absolute inset-0
+        bg-gradient-to-r
+        from-[#c89b7b]/20 to-[#d4a98c]/20
+        opacity-0 group-hover:opacity-100
+        transition duration-500"
+                />
 
-              {/* shimmer sweep */}
-              <span className="absolute top-0 left-[-120%] w-[60%] h-full bg-gradient-to-r from-transparent via-white/30 to-transparent rotate-12 group-hover:left-[120%] transition-all duration-1000 ease-out" />
+                {/* SHIMMER SWEEP */}
+                <span
+                  className="absolute top-0 left-[-120%]
+        w-[60%] h-full
+        bg-gradient-to-r
+        from-transparent via-white/30 to-transparent
+        rotate-12
+        group-hover:left-[120%]
+        transition-all duration-1000 ease-out"
+                />
 
-              {/* text */}
-              <span className="relative z-10 text-white group-hover:text-[#c89b7b] transition">
-                View on Map →
-              </span>
-            </button>
+                {/* TEXT */}
+                <span
+                  className="relative z-10
+        inline-flex items-center gap-2
+        text-white group-hover:text-[#c89b7b]
+        transition"
+                >
+                  View on Map
+                  <span
+                    className="transition-transform duration-300
+          group-hover:translate-x-1"
+                  >
+                    →
+                  </span>
+                </span>
+              </button>
+            </a>
           </div>
         </div>
       </div>

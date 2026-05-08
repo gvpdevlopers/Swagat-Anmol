@@ -15,7 +15,7 @@ export default function Gallery() {
       <FeaturedShowcase />
       <HorizontalGallery />
       <Showcase />
-      <MasonryGallery/>
+      {/* <MasonryGallery/> */}
       <FullscreenParallax />
       <GalleryCTA />
     </>

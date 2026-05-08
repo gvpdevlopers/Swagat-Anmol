@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import heroImg from "../../assets/hero.webp";
+import { Link } from "react-router-dom";
 
 export default function GalleryHero() {
   const titleRef = useRef();
@@ -120,12 +121,11 @@ export default function GalleryHero() {
           {/* TITLE */}
           <h1
             ref={titleRef}
-             className="font-[Space_Grotesk] text-4xl sm:text-5xl md:text-7xl font-semibold leading-[1.1] tracking-tight"
+            className="font-[Space_Grotesk] text-4xl sm:text-5xl md:text-7xl font-semibold leading-[1.1] tracking-tight"
           >
             <span className="block text-white/90">Spaces Crafted</span>
 
             <span className="block bg-gradient-to-r from-[#c89b7b] to-[#e0bfa3] bg-clip-text text-transparent drop-shadow-[0_10px_30px_rgba(200,155,123,0.2)]">
-                
               For Elevated Living
             </span>
           </h1>
@@ -146,37 +146,41 @@ export default function GalleryHero() {
             className="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4"
           >
             {/* PRIMARY */}
-            <button
-              className="relative px-8 py-4 rounded-full text-sm font-[Space_Grotesk]
+            <Link to="/residences">
+              <button
+                className="relative px-8 py-4 rounded-full text-sm font-[Space_Grotesk]
               overflow-hidden group cursor-pointer
               backdrop-blur-xl bg-white/10 border border-white/20
               shadow-[0_10px_40px_rgba(0,0,0,0.3)]
               transition-all duration-300
               hover:border-[#c89b7b]/60 hover:shadow-[0_12px_50px_rgba(200,155,123,0.25)]"
-            >
-              <span className="absolute inset-0 bg-gradient-to-r from-[#c89b7b]/20 to-[#d4a98c]/20 opacity-0 group-hover:opacity-100 transition duration-500" />
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-[#c89b7b]/20 to-[#d4a98c]/20 opacity-0 group-hover:opacity-100 transition duration-500" />
 
-              <span className="absolute top-0 left-[-120%] w-[60%] h-full bg-gradient-to-r from-transparent via-white/30 to-transparent rotate-12 group-hover:left-[120%] transition-all duration-1000 ease-out" />
+                <span className="absolute top-0 left-[-120%] w-[60%] h-full bg-gradient-to-r from-transparent via-white/30 to-transparent rotate-12 group-hover:left-[120%] transition-all duration-1000 ease-out" />
 
-              <span className="relative z-10 text-white group-hover:text-[#c89b7b] transition">
-                Explore Gallery
-              </span>
-            </button>
+                <span className="relative z-10 text-white group-hover:text-[#c89b7b] transition">
+                  Explore Residences
+                </span>
+              </button>
+            </Link>
 
             {/* SECONDARY */}
-            <button
-              className="relative px-6 py-3 text-sm font-[Space_Grotesk]
+            <Link to="/contact">
+              <button
+                className="relative px-6 py-3 text-sm font-[Space_Grotesk]
               text-white/80 group cursor-pointer transition"
-            >
-              <span className="inline-flex items-center gap-2 group-hover:text-[#c89b7b] transition">
-                Schedule Visit
-                <span className="inline-block transform transition-transform duration-300 group-hover:translate-x-1">
-                  →
+              >
+                <span className="inline-flex items-center gap-2 group-hover:text-[#c89b7b] transition">
+                  Schedule Visit
+                  <span className="inline-block transform transition-transform duration-300 group-hover:translate-x-1">
+                    →
+                  </span>
                 </span>
-              </span>
 
-              <span className="absolute left-0 bottom-0 h-[1px] w-0 bg-[#c89b7b] transition-all duration-500 group-hover:w-full" />
-            </button>
+                <span className="absolute left-0 bottom-0 h-[1px] w-0 bg-[#c89b7b] transition-all duration-500 group-hover:w-full" />
+              </button>
+            </Link>
           </div>
         </div>
       </div>

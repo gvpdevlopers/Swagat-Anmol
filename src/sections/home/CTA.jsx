@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {Link} from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -83,7 +84,7 @@ export default function CTA() {
         <div ref={contentRef}>
           {/* HEADLINE */}
           <h2 className="font-[Space_Grotesk] text-4xl sm:text-5xl md:text-6xl font-semibold leading-[1.1] tracking-tight">
-            Book your dream home today
+            Begin Your Luxury Journey
           </h2>
 
           {/* SUBTEXT */}
@@ -99,6 +100,7 @@ export default function CTA() {
           <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
             
             {/* PRIMARY */}
+            <Link to="/contact">
             <button
               onMouseMove={(e) => handleMove(e, e.currentTarget)}
               onMouseLeave={(e) => handleLeave(e.currentTarget)}
@@ -109,15 +111,15 @@ export default function CTA() {
                 Schedule Site Visit
               </span>
             </button>
+            </Link>
 
-            {/* SECONDARY */}
-            <button
+            {/* <button
               onMouseMove={(e) => handleMove(e, e.currentTarget)}
               onMouseLeave={(e) => handleLeave(e.currentTarget)}
               className="px-8 py-4 rounded-full font-[Space_Grotesk] text-sm border border-white/20 hover:border-[#c89b7b]/60 hover:text-[#c89b7b] transition backdrop-blur-xl bg-white/5 hover:cursor-pointer"
             >
               Download Brochure →
-            </button>
+            </button> */}
 
           </div>
         </div>

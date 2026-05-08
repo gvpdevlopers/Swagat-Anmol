@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,7 +26,7 @@ export default function GalleryCTA() {
             trigger: sectionRef.current,
             start: "top 80%",
           },
-        }
+        },
       );
 
       // BACKGROUND GLOW FLOAT
@@ -83,7 +84,7 @@ export default function GalleryCTA() {
         <div ref={contentRef}>
           {/* HEADLINE */}
           <h2 className="font-[Space_Grotesk] text-4xl sm:text-5xl md:text-6xl font-semibold leading-[1.1] tracking-tight">
-            Discover Spaces Crafted
+            Discover Spaces Designed
             <span className="block bg-gradient-to-r from-[#c89b7b] to-[#e0bfa3] bg-clip-text text-transparent">
               For Timeless Living
             </span>
@@ -91,10 +92,9 @@ export default function GalleryCTA() {
 
           {/* SUBTEXT */}
           <p className="mt-6 text-gray-300 max-w-2xl mx-auto font-[Inter] text-sm sm:text-base leading-relaxed">
-            Explore a curated collection of architecture,
-            interiors, landscaped experiences, and premium
-            lifestyle moments thoughtfully designed to inspire
-            elevated modern living.
+            Explore a curated collection of architecture, interiors, landscaped
+            experiences, and premium lifestyle moments thoughtfully designed to
+            inspire elevated modern living.
           </p>
 
           {/* DIVIDER */}
@@ -102,29 +102,30 @@ export default function GalleryCTA() {
 
           {/* BUTTONS */}
           <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
-
             {/* PRIMARY */}
-            <button
-              onMouseMove={(e) => handleMove(e, e.currentTarget)}
-              onMouseLeave={(e) => handleLeave(e.currentTarget)}
-              className="relative px-8 py-4 rounded-full font-[Space_Grotesk] text-sm backdrop-blur-xl bg-white/10 border border-white/20 shadow-[0_10px_40px_rgba(0,0,0,0.4)] overflow-hidden group hover:cursor-pointer"
-            >
-              <span className="absolute inset-0 bg-gradient-to-r from-[#c89b7b]/20 to-[#d4a98c]/20 opacity-0 group-hover:opacity-100 transition duration-500" />
+            <Link to="/contact">
+              <button
+                onMouseMove={(e) => handleMove(e, e.currentTarget)}
+                onMouseLeave={(e) => handleLeave(e.currentTarget)}
+                className="relative px-8 py-4 rounded-full font-[Space_Grotesk] text-sm backdrop-blur-xl bg-white/10 border border-white/20 shadow-[0_10px_40px_rgba(0,0,0,0.4)] overflow-hidden group hover:cursor-pointer"
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-[#c89b7b]/20 to-[#d4a98c]/20 opacity-0 group-hover:opacity-100 transition duration-500" />
 
-              <span className="relative z-10 group-hover:text-[#c89b7b] transition">
-                Book A Private Tour
-              </span>
-            </button>
-
+                <span className="relative z-10 group-hover:text-[#c89b7b] transition">
+                  Schedule Site Visit
+                </span>
+              </button>
+            </Link>
             {/* SECONDARY */}
-            <button
-              onMouseMove={(e) => handleMove(e, e.currentTarget)}
-              onMouseLeave={(e) => handleLeave(e.currentTarget)}
-              className="px-8 py-4 rounded-full font-[Space_Grotesk] text-sm border border-white/20 hover:border-[#c89b7b]/60 hover:text-[#c89b7b] transition backdrop-blur-xl bg-white/5 hover:cursor-pointer"
-            >
-              Explore Residences →
-            </button>
-
+            <Link to="/residences">
+              <button
+                onMouseMove={(e) => handleMove(e, e.currentTarget)}
+                onMouseLeave={(e) => handleLeave(e.currentTarget)}
+                className="px-8 py-4 rounded-full font-[Space_Grotesk] text-sm border border-white/20 hover:border-[#c89b7b]/60 hover:text-[#c89b7b] transition backdrop-blur-xl bg-white/5 hover:cursor-pointer"
+              >
+                Explore Residences →
+              </button>
+            </Link>
           </div>
         </div>
       </div>

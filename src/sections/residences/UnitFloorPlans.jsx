@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { FaTimes } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 import plan2bhk from "../../assets/2 BHK Unit Plan.jpeg";
 import plan3bhk from "../../assets/3 BHK Unit Plan.jpeg";
@@ -46,13 +47,14 @@ export default function UnitFloorPlans() {
           scale: 1,
           duration: 0.5,
           ease: "power3.out",
-        }
+        },
       );
   }, [active]);
 
   return (
     <>
       <section
+        id="unit-floorplans"
         className="relative py-20 md:py-28 text-black overflow-hidden"
         style={{ background: "#f5f1ec" }}
       >
@@ -73,7 +75,8 @@ export default function UnitFloorPlans() {
             </h2>
 
             <p className="mt-4 text-black/60 text-sm md:text-base">
-              Select your residence type and explore thoughtfully designed layouts.
+              Select your residence type and explore thoughtfully designed
+              layouts.
             </p>
           </div>
 
@@ -102,7 +105,6 @@ export default function UnitFloorPlans() {
             className="mt-8 md:mt-12 cursor-pointer group max-w-4xl mx-auto"
           >
             <div className="relative rounded-2xl overflow-hidden border border-black/10 bg-white/60 backdrop-blur-xl transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-[0_20px_60px_rgba(0,0,0,0.15)]">
-              
               {/* IMAGE */}
               <div className="h-[260px] sm:h-[320px] md:h-[420px] flex items-center justify-center">
                 <img
@@ -118,7 +120,6 @@ export default function UnitFloorPlans() {
 
               {/* CONTENT + BUTTON */}
               <div className="absolute bottom-0 left-0 w-full p-4 md:p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-                
                 <div>
                   <h3 className="text-lg md:text-xl font-semibold text-black">
                     {plans[active].title}
@@ -129,11 +130,12 @@ export default function UnitFloorPlans() {
                 </div>
 
                 {/* BUTTON */}
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setModal(true);
-                  }}
+                <Link to="/contact">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setModal(true);
+                    }}
                   className="relative px-6 py-2 rounded-full text-xs md:text-sm font-[Space_Grotesk]
                   overflow-hidden group cursor-pointer
                   backdrop-blur-xl bg-white/70 border border-black/10
@@ -145,9 +147,10 @@ export default function UnitFloorPlans() {
                   <span className="absolute top-0 left-[-120%] w-[60%] h-full bg-gradient-to-r from-transparent via-white/50 to-transparent rotate-12 group-hover:left-[120%] transition-all duration-1000 ease-out" />
 
                   <span className="relative z-10 text-black group-hover:text-[#c89b7b] transition">
-                    View Plan
+                    Request Detailed Floor Plan
                   </span>
                 </button>
+                </Link>
               </div>
             </div>
           </div>

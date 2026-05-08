@@ -3,6 +3,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
 import bgImage from "../../assets/experience-1.jpeg";
+import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -162,7 +163,6 @@ export default function FullscreenParallax() {
           leading-[0.95] tracking-tight
           text-white font-semibold
           max-w-6xl"
-          
         >
           Designed To
           <span className="block bg-gradient-to-r from-[#c89b7b] to-[#e0bfa3] bg-clip-text text-transparent">
@@ -189,8 +189,9 @@ export default function FullscreenParallax() {
         />
 
         {/* CTA */}
-        <button
-          className="mt-12 relative
+        <Link to="/contact">
+          <button
+            className="mt-12 relative
           px-8 py-4 rounded-full
           text-sm font-[Space_Grotesk]
           overflow-hidden group
@@ -200,35 +201,36 @@ export default function FullscreenParallax() {
           transition-all duration-300
           hover:border-[#c89b7b]/60
           hover:shadow-[0_12px_50px_rgba(200,155,123,0.25)]"
-        >
-          {/* BG */}
-          <span
-            className="absolute inset-0
+          >
+            {/* BG */}
+            <span
+              className="absolute inset-0
             bg-gradient-to-r
             from-[#c89b7b]/20 to-[#d4a98c]/20
             opacity-0 group-hover:opacity-100
             transition duration-500"
-          />
+            />
 
-          {/* SHINE */}
-          <span
-            className="absolute top-0 left-[-120%]
+            {/* SHINE */}
+            <span
+              className="absolute top-0 left-[-120%]
             w-[60%] h-full
             bg-gradient-to-r
             from-transparent via-white/30 to-transparent
             rotate-12
             group-hover:left-[120%]
             transition-all duration-1000 ease-out"
-          />
+            />
 
-          <span
-            className="relative z-10
+            <span
+              className="relative z-10
             text-white group-hover:text-[#c89b7b]
             transition"
-          >
-            Explore The Experience
-          </span>
-        </button>
+            >
+              Experience It In Person
+            </span>
+          </button>
+        </Link>
       </div>
 
       {/* BOTTOM FADE */}

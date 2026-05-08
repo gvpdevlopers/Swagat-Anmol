@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { Link } from "react-router-dom";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -148,20 +149,22 @@ export default function Statement() {
               </div>
 
               {/* CTA */}
-              <button
-                className="mt-6 w-full py-3 rounded-full text-sm font-[Space_Grotesk]
+              <Link to="/contact">
+                <button
+                  className="mt-6 w-full py-3 rounded-full text-sm font-[Space_Grotesk]
   relative overflow-hidden group cursor-pointer
   backdrop-blur-xl bg-white/10 border border-white/20
   transition-all duration-300
   hover:border-[#c89b7b]/60 hover:bg-white/15"
-              >
-                {/* subtle glow */}
-                <span className="absolute inset-0 bg-gradient-to-r from-[#c89b7b]/10 to-[#d4a98c]/10 opacity-0 group-hover:opacity-100 transition duration-500" />
+                >
+                  {/* subtle glow */}
+                  <span className="absolute inset-0 bg-gradient-to-r from-[#c89b7b]/10 to-[#d4a98c]/10 opacity-0 group-hover:opacity-100 transition duration-500" />
 
-                <span className="relative z-10 text-white/90 group-hover:text-[#c89b7b] transition">
-                  Explore More →
-                </span>
-              </button>
+                  <span className="relative z-10 text-white/90 group-hover:text-[#c89b7b] transition">
+                    Contact Us →
+                  </span>
+                </button>
+              </Link>
             </div>
           </div>
         </div>

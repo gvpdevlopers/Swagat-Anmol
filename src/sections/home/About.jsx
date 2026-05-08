@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Link } from "react-router-dom";
 
 import aboutMain from "../../assets/about-main.jpeg";
 import aboutSmall from "../../assets/about-small.jpeg";
@@ -152,6 +153,7 @@ export default function About() {
 
           {/* CTA */}
           <div className="mt-8">
+            <Link to="/about">
             <button
               className="relative px-7 py-3 rounded-full text-sm font-[Space_Grotesk] 
     overflow-hidden group cursor-pointer
@@ -166,9 +168,10 @@ export default function About() {
               <span className="absolute top-0 left-[-120%] w-[60%] h-full bg-gradient-to-r from-transparent via-white/30 to-transparent rotate-12 group-hover:left-[120%] transition-all duration-1000 ease-out" />
 
               <span className="relative z-10 text-white group-hover:text-[#c89b7b] transition">
-                Learn More
+                Discover The Vision
               </span>
             </button>
+            </Link>
           </div>
         </div>
       </div>

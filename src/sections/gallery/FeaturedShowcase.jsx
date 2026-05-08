@@ -2,10 +2,11 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
-import img1 from "../../assets/experience-1.jpeg";
-import img2 from "../../assets/AboutUs-intro.jpeg";
+import img1 from "../../assets/AboutUs-intro.jpeg";
+import img2 from "../../assets/featured showcase.jpeg";
 import img3 from "../../assets/amenities-gym-1.jpeg";
 import img4 from "../../assets/why-choose-1.jpeg";
+import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -178,8 +179,6 @@ export default function FeaturedShowcase() {
             >
               {/* IMAGE SIDE */}
               <div className="relative">
-              
-
                 {/* IMAGE WRAPPER */}
                 <div
                   className="relative rounded-[28px] overflow-hidden
@@ -292,9 +291,7 @@ export default function FeaturedShowcase() {
                     >
                       <span className="w-2 h-2 rounded-full bg-[#c89b7b]" />
 
-                      <span className="text-sm sm:text-base">
-                        {point}
-                      </span>
+                      <span className="text-sm sm:text-base">{point}</span>
                     </div>
                   ))}
                 </div>
@@ -307,8 +304,9 @@ export default function FeaturedShowcase() {
                 />
 
                 {/* CTA */}
-                <button
-                  className="mt-10 relative px-8 py-4 rounded-full
+                <Link to="/contact">
+                  <button
+                    className="mt-10 relative px-8 py-4 rounded-full
                   text-sm font-[Space_Grotesk]
                   overflow-hidden group cursor-pointer
                   backdrop-blur-xl bg-white/5
@@ -317,32 +315,33 @@ export default function FeaturedShowcase() {
                   transition-all duration-300
                   hover:border-[#c89b7b]/60
                   hover:shadow-[0_12px_50px_rgba(200,155,123,0.2)]"
-                >
-                  <span
-                    className="absolute inset-0
+                  >
+                    <span
+                      className="absolute inset-0
                     bg-gradient-to-r
                     from-[#c89b7b]/20 to-[#d4a98c]/20
                     opacity-0 group-hover:opacity-100
                     transition duration-500"
-                  />
+                    />
 
-                  <span
-                    className="absolute top-0 left-[-120%]
+                    <span
+                      className="absolute top-0 left-[-120%]
                     w-[60%] h-full
                     bg-gradient-to-r
                     from-transparent via-white/20 to-transparent
                     rotate-12
                     group-hover:left-[120%]
                     transition-all duration-1000 ease-out"
-                  />
+                    />
 
-                  <span
-                    className="relative z-10 text-white
+                    <span
+                      className="relative z-10 text-white
                     group-hover:text-[#c89b7b] transition"
-                  >
-                    Explore Spaces
-                  </span>
-                </button>
+                    >
+                      Experience The Spaces
+                    </span>
+                  </button>
+                </Link>
               </div>
             </div>
           ))}
