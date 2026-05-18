@@ -87,7 +87,7 @@ export default function AboutDeveloper() {
           <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-[Space_Grotesk] leading-tight">
             Built by{" "}
             <span className="bg-gradient-to-r from-[#c89b7b] to-[#e0bfa3] bg-clip-text text-transparent">
-              Swagat Developers
+              Swagat Anmol Developers
             </span>
           </h2>
 
